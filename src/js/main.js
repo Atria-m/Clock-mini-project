@@ -67,7 +67,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener("DOMContentLoaded", () => {
   const selectMenu = document.querySelectorAll("select");
   const timeBox = document.querySelector(".time");
   const setAlarmBtn = document.querySelector(".btn");
@@ -77,7 +77,7 @@ window.addEventListener('DOMContentLoaded', () => {
   let alarmState = "noset";
   let isAlarmPlaying = false;
 
-  const ringtone = new Audio("music/ring.mp3");
+  const ringtone = new Audio("/Clock-mini-project/public/music/ring.mp3");
   ringtone.loop = true;
 
   for (let i = 23; i >= 0; i--) {
@@ -126,12 +126,14 @@ window.addEventListener('DOMContentLoaded', () => {
     timeBox.innerHTML = `${h}:${m}:${s}`;
 
     if (`${h}:${m}` === alarmTime && !isAlarmPlaying) {
-      ringtone.play().catch(e => console.log("Error playing sound:", e));
+      ringtone.play().catch((e) => console.log("Error playing sound:", e));
       isAlarmPlaying = true;
     }
   }, 1000);
 });
-fetch('/audio/ringtone.mp3').then(res => {
-  if (res.ok) console.log("فایل صوتی وجود دارد و قابل بارگذاری است.");
-  else console.error("فایل صوتی پیدا نشد یا قابل دسترسی نیست.");
-}).catch(e => console.error("خطا در دسترسی به فایل صوتی:", e));
+fetch("/audio/ringtone.mp3")
+  .then((res) => {
+    if (res.ok) console.log("فایل صوتی وجود دارد و قابل بارگذاری است.");
+    else console.error("فایل صوتی پیدا نشد یا قابل دسترسی نیست.");
+  })
+  .catch((e) => console.error("خطا در دسترسی به فایل صوتی:", e));
