@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alarm Clock mini project</title>
+    <link rel="stylesheet" href="./src/tailwind/main.css" />
+    <link rel="stylesheet" href="./src/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-[radial-gradient(ellipse_at_20%_30%,_#e0f7fa_0%,_#b3e5fc_25%,_#81d4fa_50%,_#4fc3f7_75%,_#ffffff_100%)] bg-no-repeat bg-fixed bg-cover animate-bg-move min-h-screen dark:bg-[radial-gradient(ellipse_at_20%_30%,_#0d1b2a_0%,_#1b3b5a_25%,_#27496d_50%,_#122e4a_75%,_#000000_100%)] dark:text-[#e0e6f1]"
+  >
+    <button
+      id="theme-toggle"
+      class="absolute top-4 left-4 z-50 px-4 py-2 bg-yellow-300 dark:bg-[#1b3b5a] text-gray-800 dark:text-[#e0e6f1] rounded-xl shadow-md hover:scale-105 transition-transform"
+    >
+      Change Theme
+    </button>
+
+    <div
+      class="header relative w-full h-20 desktop:h-28 flex justify-end items-center overflow-hidden bg-gradient-to-r from-yellow-50 via-yellow-100 to-yellow-50 border-b border-yellow-200/20 shadow-[inset_0_2px_6px_rgba(255,250,240,0.3),_0_4px_10px_rgba(255,245,210,0.1)] dark:bg-gradient-to-r dark:from-[#0d1b2a] dark:via-[#1b3b5a] dark:to-[#0d1b2a] dark:border-[#1b3b5a]/30 dark:shadow-[inset_0_2px_6px_rgba(18,46,74,0.8),_0_4px_10px_rgba(18,46,74,0.7)]"
+    >
+      <div class="stars"></div>
+
+      <div
+        class="header-center w-20 desktop:w-28 h-full flex justify-start items-center px-4 relative z-10"
+      ></div>
+    </div>
+
+    <div
+      class="full-container max-w-full h-[80vh] flex justify-center items-center"
+    >
+      <div
+        class="container flex flex-col justify-center items-center w-[450px] p-6 rounded-2xl bg-white/30 backdrop-blur-md border border-white/30 shadow-xl dark:bg-[#1b3b5a]/30 dark:border-[#27496d]/30"
+      >
+        <img
+          src="./public/svg/clock.svg"
+          alt="clock icon"
+          class="w-24 h-24 mb-6"
+        />
+        <h1
+          class="time text-4xl font-semibold text-gray-700 dark:text-[#e0e6f1] tracking-wide my-8 drop-shadow-md"
+        >
+          23:40:50
+        </h1>
+
+        <div class="content w-full flex gap-4 mb-6">
+          <div
+            class="controls flex-1 border border-white/40 rounded-lg py-2 px-3 bg-white/20 hover:bg-white/30 transition-colors duration-200 dark:border-[#27496d]/40 dark:bg-[#27496d]/30 dark:hover:bg-[#27496d]/50"
+          >
+            <select
+              class="outline-none border-none text-[16px] w-full bg-transparent text-gray-700 dark:text-[#e0e6f1] hover:cursor-pointer font-medium"
+            >
+              <option
+                value="Hour"
+                selected
+                hidden
+                class="text-gray-400 dark:text-gray-300"
+              >
+                Hour
+              </option>
+            </select>
+          </div>
+
+          <div
+            class="controls flex-1 border border-white/40 rounded-lg py-2 px-3 bg-white/20 hover:bg-white/30 transition-colors duration-200 dark:border-[#27496d]/40 dark:bg-[#27496d]/30 dark:hover:bg-[#27496d]/50"
+          >
+            <select
+              class="outline-none border-none text-[16px] w-full bg-transparent text-gray-700 dark:text-[#e0e6f1] hover:cursor-pointer font-medium"
+            >
+              <option
+                value="Minute"
+                selected
+                hidden
+                class="text-gray-400 dark:text-gray-300"
+              >
+                Minute
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <button
+          class="btn w-full py-3 rounded-2xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 transition duration-300 hover:bg-[radial-gradient(circle_at_20%_30%,_#76c7f5_0%,_#58b1e6_40%,_#3c9bd7_75%,_#2a7cc0_100%)] dark:bg-[radial-gradient(circle_at_20%_30%,_#4a8bbd_0%,_#2a5d95_40%,_#1b3c6c_75%,_#12274b_100%)] hover:shadow-none active:scale-95 active:transition-transform text-gray-700 dark:text-[#e0e6f1] dark:hover:bg-[radial-gradient(circle_at_20%_30%,_#76c7f5_0%,_#58b1e6_40%,_#3c9bd7_75%,_#2a7cc0_100%)]"
+        >
+          Set Alarm
+        </button>
+      </div>
+    </div>
+
+    <script src="./src/js/main.js"></script>
+  </body>
+</html>

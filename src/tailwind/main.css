@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.dark .headerd {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(to bottom, #0a0a1a, #000010);
+  position: relative;
+  overflow: hidden;
+}
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: none;
+}
+.dark .stars {
+  display: block;
+}
+.star {
+  fill: #e6e6ff;
+  position: absolute;
+  transform-origin: center;
+  display: block;
+  animation-name: star-twinkle;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.7);
+  }
+}
+
+.container .content.disable {
+  opacity: 0.5;
+  pointer-events: none;
+}
