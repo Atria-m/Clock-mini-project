@@ -77,7 +77,7 @@ let alarmState = "noset";
 let isAlarmPlaying = false;
 
 // مسیر فایل صوتی را متناسب با پروژه‌ات تنظیم کن
-const ringtone = new Audio("./audio/ringtone.mp3");
+const ringtone = new Audio("https://github.com/Atria-m/Clock-mini-project/blob/main/public/audio/ringtone.mp3");
 ringtone.loop = true;
 
 // پر کردن ساعت‌ها و دقیقه‌ها در select
