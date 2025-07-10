@@ -72,13 +72,15 @@ const timeBox = document.querySelector(".time");
 const setAlarmBtn = document.querySelector(".btn");
 const content = document.querySelector(".content");
 
-let alarmTime,
-  alarmState = "noset";
+let alarmTime = "";
+let alarmState = "noset";
 let isAlarmPlaying = false;
 
+// مسیر فایل صوتی را متناسب با پروژه‌ات تنظیم کن
 const ringtone = new Audio("./audio/ringtone.mp3");
 ringtone.loop = true;
 
+// پر کردن ساعت‌ها و دقیقه‌ها در select
 for (let i = 23; i >= 0; i--) {
   let val = i < 10 ? "0" + i : i;
   let option = `<option value="${val}" class="text-gray-700 font-semibold">${val}</option>`;
@@ -92,14 +94,24 @@ for (let i = 59; i >= 0; i--) {
 }
 
 setAlarmBtn.addEventListener("click", () => {
-  alarmTime = `${selectMenu[0].value}:${selectMenu[1].value}`;
-  if (alarmTime.includes("Hour") || alarmTime.includes("Minute")) {
-    return alert("زمان هشدار را به درستی مشخص کنید!");
+  if (alarmState === "noset") {
+    alarmTime = `${selectMenu[0].value}:${selectMenu[1].value}`;
+    if (alarmTime.includes("Hour") || alarmTime.includes("Minute")) {
+      alert("زمان هشدار را به درستی مشخص کنید!");
+      return;
+    }
+    ringtone.load();
+    content.classList.add("disable");
+    setAlarmBtn.innerText = "clear Alarm";
+    alarmState = "set";
+  } else {
+    content.classList.remove("disable");
+    alarmTime = "";
+    ringtone.pause();
+    isAlarmPlaying = false;
+    setAlarmBtn.innerText = "set Alarm";
+    alarmState = "noset";
   }
-  ringtone.load();
-  content.classList.add("disable");
-  setAlarmBtn.innerText = "clear Alarm";
-  checkState(alarmState);
 });
 
 setInterval(() => {
@@ -115,21 +127,7 @@ setInterval(() => {
   timeBox.innerHTML = `${h}:${m}:${s}`;
 
   if (`${h}:${m}` === alarmTime && !isAlarmPlaying) {
-    ringtone.play();
+    ringtone.play().catch((e) => console.log("Error playing sound:", e));
     isAlarmPlaying = true;
   }
 }, 1000);
-
-function checkState(state) {
-  if (state === "noset") {
-    content.classList.add("disable");
-    setAlarmBtn.innerText = "clear Alarm";
-    alarmState = "set";
-  } else {
-    content.classList.remove("disable");
-    alarmTime = "";
-    ringtone.pause();
-    alarmState = "noset";
-    setAlarmBtn.innerText = "set Alarm";
-  }
-}
