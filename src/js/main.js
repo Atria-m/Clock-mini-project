@@ -49,21 +49,23 @@ for (let i = 0; i < starCount; i++) {
   stars.push({ x, y, size });
 }
 
-const themeToggle = document.getElementById("theme-toggle");
+window.addEventListener("DOMContentLoaded", () => {
+  const themeToggle = document.getElementById("theme-toggle");
 
-themeToggle.addEventListener("click", () => {
-  document.documentElement.classList.toggle("dark");
+  themeToggle.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
 
-  if (document.documentElement.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
-  } else {
-    localStorage.setItem("theme", "light");
+    if (document.documentElement.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  });
+
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
   }
 });
-
-if (localStorage.getItem("theme") === "dark") {
-  document.documentElement.classList.add("dark");
-}
 
 const selectMenu = document.querySelectorAll("select");
 const timeBox = document.querySelector(".time");
@@ -74,7 +76,7 @@ let alarmTime,
   alarmState = "noset";
 let isAlarmPlaying = false;
 
-const ringtone = new Audio("/audio/ringtone.mp3");
+const ringtone = new Audio("./audio/ringtone.mp3");
 ringtone.loop = true;
 
 for (let i = 23; i >= 0; i--) {
