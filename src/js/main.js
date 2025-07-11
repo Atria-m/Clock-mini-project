@@ -77,7 +77,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let alarmState = "noset";
   let isAlarmPlaying = false;
 
-  const ringtone = new Audio("/public/music/ring.mp3");
+  const ringtone = new Audio("https://atria-m.github.io/Clock-mini-project/public/music/ring.mp3");
   ringtone.loop = true;
 
   for (let i = 23; i >= 0; i--) {
